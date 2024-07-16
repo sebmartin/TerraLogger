@@ -1,0 +1,659 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		967AE2752C48BA3B00E534D6 /* GPXKit in Frameworks */ = {isa = PBXBuildFile; productRef = 967AE2742C48BA3B00E534D6 /* GPXKit */; };
+		968AAA532C696BAC00C69C62 /* RCKML in Frameworks */ = {isa = PBXBuildFile; productRef = 968AAA522C696BAC00C69C62 /* RCKML */; };
+		968AAA552C696BDB00C69C62 /* RCKML in Frameworks */ = {isa = PBXBuildFile; productRef = 968AAA542C696BDB00C69C62 /* RCKML */; };
+		96DD92CC2C47554800E4E937 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 96DD92CB2C47554800E4E937 /* MapboxMaps */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		960A0A762C46117700468DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 960A0A5B2C46117500468DE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 960A0A622C46117500468DE7;
+			remoteInfo = TerraLogger;
+		};
+		960A0A802C46117700468DE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 960A0A5B2C46117500468DE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 960A0A622C46117500468DE7;
+			remoteInfo = TerraLogger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		960A0A632C46117500468DE7 /* TerraLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerraLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		960A0A752C46117700468DE7 /* TerraLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TerraLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		960A0A7F2C46117700468DE7 /* TerraLoggerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TerraLoggerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		960A0A932C46145C00468DE7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 960A0A622C46117500468DE7 /* TerraLogger */;
+		};
+		96A4BDEC2C71B6BF0043F0DE /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Fixtures/Trails/Central Park/trails.trail-of-hope.gpx",
+			);
+			target = 960A0A622C46117500468DE7 /* TerraLogger */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		960A0A652C46117500468DE7 /* TerraLogger */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (960A0A932C46145C00468DE7 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = TerraLogger; sourceTree = "<group>"; };
+		960A0A782C46117700468DE7 /* TerraLoggerTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (96A4BDEC2C71B6BF0043F0DE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = TerraLoggerTests; sourceTree = "<group>"; };
+		960A0A822C46117700468DE7 /* TerraLoggerUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TerraLoggerUITests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		960A0A602C46117500468DE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				968AAA552C696BDB00C69C62 /* RCKML in Frameworks */,
+				96DD92CC2C47554800E4E937 /* MapboxMaps in Frameworks */,
+				967AE2752C48BA3B00E534D6 /* GPXKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		960A0A722C46117700468DE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				968AAA532C696BAC00C69C62 /* RCKML in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		960A0A7C2C46117700468DE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		960A0A5A2C46117500468DE7 = {
+			isa = PBXGroup;
+			children = (
+				960A0A652C46117500468DE7 /* TerraLogger */,
+				960A0A782C46117700468DE7 /* TerraLoggerTests */,
+				960A0A822C46117700468DE7 /* TerraLoggerUITests */,
+				960A0A642C46117500468DE7 /* Products */,
+				968BFD902C46176E00C6C9F9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		960A0A642C46117500468DE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				960A0A632C46117500468DE7 /* TerraLogger.app */,
+				960A0A752C46117700468DE7 /* TerraLoggerTests.xctest */,
+				960A0A7F2C46117700468DE7 /* TerraLoggerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		968BFD902C46176E00C6C9F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		960A0A622C46117500468DE7 /* TerraLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 960A0A892C46117700468DE7 /* Build configuration list for PBXNativeTarget "TerraLogger" */;
+			buildPhases = (
+				960A0A5F2C46117500468DE7 /* Sources */,
+				960A0A602C46117500468DE7 /* Frameworks */,
+				960A0A612C46117500468DE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				960A0A652C46117500468DE7 /* TerraLogger */,
+			);
+			name = TerraLogger;
+			packageProductDependencies = (
+				96DD92CB2C47554800E4E937 /* MapboxMaps */,
+				967AE2742C48BA3B00E534D6 /* GPXKit */,
+				968AAA542C696BDB00C69C62 /* RCKML */,
+			);
+			productName = TerraLogger;
+			productReference = 960A0A632C46117500468DE7 /* TerraLogger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		960A0A742C46117700468DE7 /* TerraLoggerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 960A0A8C2C46117700468DE7 /* Build configuration list for PBXNativeTarget "TerraLoggerTests" */;
+			buildPhases = (
+				960A0A712C46117700468DE7 /* Sources */,
+				960A0A722C46117700468DE7 /* Frameworks */,
+				960A0A732C46117700468DE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				960A0A772C46117700468DE7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				960A0A782C46117700468DE7 /* TerraLoggerTests */,
+			);
+			name = TerraLoggerTests;
+			packageProductDependencies = (
+				968AAA522C696BAC00C69C62 /* RCKML */,
+			);
+			productName = TerraLoggerTests;
+			productReference = 960A0A752C46117700468DE7 /* TerraLoggerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		960A0A7E2C46117700468DE7 /* TerraLoggerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 960A0A8F2C46117700468DE7 /* Build configuration list for PBXNativeTarget "TerraLoggerUITests" */;
+			buildPhases = (
+				960A0A7B2C46117700468DE7 /* Sources */,
+				960A0A7C2C46117700468DE7 /* Frameworks */,
+				960A0A7D2C46117700468DE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				960A0A812C46117700468DE7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				960A0A822C46117700468DE7 /* TerraLoggerUITests */,
+			);
+			name = TerraLoggerUITests;
+			packageProductDependencies = (
+			);
+			productName = TerraLoggerUITests;
+			productReference = 960A0A7F2C46117700468DE7 /* TerraLoggerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		960A0A5B2C46117500468DE7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					960A0A622C46117500468DE7 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					960A0A742C46117700468DE7 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 960A0A622C46117500468DE7;
+					};
+					960A0A7E2C46117700468DE7 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 960A0A622C46117500468DE7;
+					};
+				};
+			};
+			buildConfigurationList = 960A0A5E2C46117500468DE7 /* Build configuration list for PBXProject "TerraLogger" */;
+			compatibilityVersion = "Xcode 15.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 960A0A5A2C46117500468DE7;
+			packageReferences = (
+				965E41AC2C4625F70015683D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				967AE2732C48BA3B00E534D6 /* XCRemoteSwiftPackageReference "GPXKit" */,
+				96DC1F4D2C69544D000DAFE9 /* XCRemoteSwiftPackageReference "RCKML" */,
+			);
+			productRefGroup = 960A0A642C46117500468DE7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				960A0A622C46117500468DE7 /* TerraLogger */,
+				960A0A742C46117700468DE7 /* TerraLoggerTests */,
+				960A0A7E2C46117700468DE7 /* TerraLoggerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		960A0A612C46117500468DE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		960A0A732C46117700468DE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		960A0A7D2C46117700468DE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		960A0A5F2C46117500468DE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		960A0A712C46117700468DE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		960A0A7B2C46117700468DE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		960A0A772C46117700468DE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 960A0A622C46117500468DE7 /* TerraLogger */;
+			targetProxy = 960A0A762C46117700468DE7 /* PBXContainerItemProxy */;
+		};
+		960A0A812C46117700468DE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 960A0A622C46117500468DE7 /* TerraLogger */;
+			targetProxy = 960A0A802C46117700468DE7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		960A0A872C46117700468DE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		960A0A882C46117700468DE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		960A0A8A2C46117700468DE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TerraLogger/Preview Content\"";
+				DEVELOPMENT_TEAM = ZGQ92828S6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TerraLogger/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Terra 🪵";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLogger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		960A0A8B2C46117700468DE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TerraLogger/Preview Content\"";
+				DEVELOPMENT_TEAM = ZGQ92828S6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TerraLogger/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Terra 🪵";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLogger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = targeted;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		960A0A8D2C46117700468DE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLoggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TerraLogger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TerraLogger";
+			};
+			name = Debug;
+		};
+		960A0A8E2C46117700468DE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLoggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TerraLogger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TerraLogger";
+			};
+			name = Release;
+		};
+		960A0A902C46117700468DE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLoggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TerraLogger;
+			};
+			name = Debug;
+		};
+		960A0A912C46117700468DE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLoggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TerraLogger;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		960A0A5E2C46117500468DE7 /* Build configuration list for PBXProject "TerraLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				960A0A872C46117700468DE7 /* Debug */,
+				960A0A882C46117700468DE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		960A0A892C46117700468DE7 /* Build configuration list for PBXNativeTarget "TerraLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				960A0A8A2C46117700468DE7 /* Debug */,
+				960A0A8B2C46117700468DE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		960A0A8C2C46117700468DE7 /* Build configuration list for PBXNativeTarget "TerraLoggerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				960A0A8D2C46117700468DE7 /* Debug */,
+				960A0A8E2C46117700468DE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		960A0A8F2C46117700468DE7 /* Build configuration list for PBXNativeTarget "TerraLoggerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				960A0A902C46117700468DE7 /* Debug */,
+				960A0A912C46117700468DE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		965E41AC2C4625F70015683D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.5.1;
+			};
+		};
+		967AE2732C48BA3B00E534D6 /* XCRemoteSwiftPackageReference "GPXKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mmllr/GPXKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.5;
+			};
+		};
+		96DC1F4D2C69544D000DAFE9 /* XCRemoteSwiftPackageReference "RCKML" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RCCoop/RCKML.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		967AE2742C48BA3B00E534D6 /* GPXKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 967AE2732C48BA3B00E534D6 /* XCRemoteSwiftPackageReference "GPXKit" */;
+			productName = GPXKit;
+		};
+		968AAA522C696BAC00C69C62 /* RCKML */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96DC1F4D2C69544D000DAFE9 /* XCRemoteSwiftPackageReference "RCKML" */;
+			productName = RCKML;
+		};
+		968AAA542C696BDB00C69C62 /* RCKML */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96DC1F4D2C69544D000DAFE9 /* XCRemoteSwiftPackageReference "RCKML" */;
+			productName = RCKML;
+		};
+		96DD92CB2C47554800E4E937 /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 965E41AC2C4625F70015683D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 960A0A5B2C46117500468DE7 /* Project object */;
+}

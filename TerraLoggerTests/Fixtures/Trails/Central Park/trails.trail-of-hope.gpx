@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="GDAL 2.2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ogr="http://osgeo.org/gdal" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata><bounds minlat="49.225600399999998" minlon="-123.023489999999995" maxlat="49.229239999999997" maxlon="-123.012696599999998"/></metadata>              
+<trk>
+  <name>Central Park - Trail of Hope</name>
+  <trkseg>
+    <trkpt lat="49.22924" lon="-123.02349">
+    </trkpt>
+    <trkpt lat="49.22908" lon="-123.02323">
+    </trkpt>
+    <trkpt lat="49.22887" lon="-123.023">
+    </trkpt>
+    <trkpt lat="49.22875" lon="-123.02284">
+    </trkpt>
+    <trkpt lat="49.22873" lon="-123.02259">
+    </trkpt>
+    <trkpt lat="49.22873" lon="-123.022">
+    </trkpt>
+    <trkpt lat="49.22871" lon="-123.02179">
+    </trkpt>
+    <trkpt lat="49.22861" lon="-123.0215">
+    </trkpt>
+    <trkpt lat="49.22847" lon="-123.02118">
+    </trkpt>
+    <trkpt lat="49.22842" lon="-123.02113">
+    </trkpt>
+    <trkpt lat="49.22825" lon="-123.02072">
+    </trkpt>
+    <trkpt lat="49.22808" lon="-123.02027">
+    </trkpt>
+    <trkpt lat="49.22788" lon="-123.01962">
+    </trkpt>
+    <trkpt lat="49.22766" lon="-123.01925">
+    </trkpt>
+    <trkpt lat="49.22749" lon="-123.019">
+    </trkpt>
+    <trkpt lat="49.22722" lon="-123.01844">
+    </trkpt>
+    <trkpt lat="49.22699" lon="-123.01798">
+    </trkpt>
+    <trkpt lat="49.2267437" lon="-123.0174861">
+    </trkpt>
+    <trkpt lat="49.2265" lon="-123.01676">
+    </trkpt>
+    <trkpt lat="49.226" lon="-123.01535">
+    </trkpt>
+    <trkpt lat="49.2259237" lon="-123.015135">
+    </trkpt>
+    <trkpt lat="49.2259" lon="-123.01492">
+    </trkpt>
+    <trkpt lat="49.22579" lon="-123.01431">
+    </trkpt>
+    <trkpt lat="49.22575" lon="-123.01402">
+    </trkpt>
+    <trkpt lat="49.22568" lon="-123.01366">
+    </trkpt>
+    <trkpt lat="49.22565" lon="-123.01304">
+    </trkpt>
+    <trkpt lat="49.2256004" lon="-123.0126966">
+    </trkpt>
+  </trkseg>
+</trk>
+</gpx>
