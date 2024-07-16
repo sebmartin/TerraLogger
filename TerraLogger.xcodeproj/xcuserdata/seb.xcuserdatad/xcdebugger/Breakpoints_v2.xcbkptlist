@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "6D358D03-F0FE-4C15-B095-779CB46D72F8"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49C87C56-6390-47D7-8F08-2651A8F7E893"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLogger/Models/Boundary.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "polygonAnnotation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A23D88D-4CE2-4E19-88E8-EFFE51D7659D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLogger/Importers/Trail/TrailImporter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "TrailImporter"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59F1792B-62F8-43D5-8A01-97A01A690228"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLogger/Importers/Trail/TrailImporter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "TrailImporter"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EAD3F1E4-0AB8-4F50-BA67-A00C6BF0DBEA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLogger/Models/Coordinate+KML.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "init(from:order:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B04A0D80-15D0-48FD-BA2C-E4D986B0402A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLogger/Sheets/Trails/TrailsSheet.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "B04A0D80-15D0-48FD-BA2C-E4D986B0402A - 1449a73951a891f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (TerraLogger.TrailsNavDestination) -&gt; SwiftUI._ConditionalContent&lt;TerraLogger.RecordTrailView, TerraLogger.ImportTrailView&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.fileImporter(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, allowedContentTypes: Swift.Array&lt;UniformTypeIdentifiers.UTType&gt;, onCompletion: (Swift.Result&lt;Foundation.URL, Swift.Error&gt;) -&gt; ()) -&gt; some&gt;&gt;.0 in TerraLogger.TrailsSheet.body.getter : some"
+                  moduleName = "TerraLogger.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seb/src/TerraLogger/TerraLogger/Sheets/Trails/TrailsSheet.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102">
+               </Location>
+               <Location
+                  uuid = "B04A0D80-15D0-48FD-BA2C-E4D986B0402A - c222916319a37f2f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (TerraLogger.Trail) -&gt; TerraLogger.Trail in closure #4 (TerraLogger.TrailsNavDestination) -&gt; SwiftUI._ConditionalContent&lt;TerraLogger.RecordTrailView, TerraLogger.ImportTrailView&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.fileImporter(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, allowedContentTypes: Swift.Array&lt;UniformTypeIdentifiers.UTType&gt;, onCompletion: (Swift.Result&lt;Foundation.URL, Swift.Error&gt;) -&gt; ()) -&gt; some&gt;&gt;.0 in TerraLogger.TrailsSheet.body.getter : some"
+                  moduleName = "TerraLogger.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seb/src/TerraLogger/TerraLogger/Sheets/Trails/TrailsSheet.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06E8FCA5-BF05-4C36-AAAC-F88BBDF8F8F6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLogger/Sheets/Trails/TrailsSheet.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62DA09F8-BCA8-4C57-B3F1-E0C0A73AC50E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLogger/Sheets/Trails/TrailRecorder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "onLocationUpdate(locations:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "62DA09F8-BCA8-4C57-B3F1-E0C0A73AC50E - c8819bdaf0407901"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TerraLogger.TrailRecorder.onLocationUpdate(locations: Swift.Array&lt;__C.MBXLocation&gt;) -&gt; ()"
+                  moduleName = "TerraLogger.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seb/src/TerraLogger/TerraLogger/Sheets/Trails/TrailRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34">
+               </Location>
+               <Location
+                  uuid = "62DA09F8-BCA8-4C57-B3F1-E0C0A73AC50E - c8819bdaf0407901"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TerraLogger.TrailRecorder.onLocationUpdate(locations: Swift.Array&lt;__C.MBXLocation&gt;) -&gt; ()"
+                  moduleName = "TerraLogger.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seb/src/TerraLogger/TerraLogger/Sheets/Trails/TrailRecorder.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13B813A0-E54E-41B0-915E-158D4630B1FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TerraLoggerTests/Sheets/Trails/TrailRecorderTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "receivingLocationsUpdatesTrailCoordinates()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
