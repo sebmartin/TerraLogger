@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Trail of Hope</name>
+    <Style id="icon-123-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/123-red-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-123-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/123-red-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-123">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-123-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-123-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-61-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/61-green-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-61-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/61-green-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-61">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-61-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-61-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="line-0288D1-5000-normal">
+      <LineStyle>
+        <color>ffd18802</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+    <Style id="line-0288D1-5000-highlight">
+      <LineStyle>
+        <color>ffd18802</color>
+        <width>7.5</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="line-0288D1-5000">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#line-0288D1-5000-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#line-0288D1-5000-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Start of Central Park - Trail of Hope</name>
+      <description><![CDATA[Sunday, August 11, 2024, 5:10 AM PDT<br>Elevation: 415 feet]]></description>
+      <styleUrl>#icon-61</styleUrl>
+      <Point>
+        <coordinates>
+          -123.02349,49.22924,126.4
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>End of Central Park - Trail of Hope</name>
+      <description><![CDATA[Sunday, August 11, 2024, 5:11 AM PDT<br>Elevation: 435 feet]]></description>
+      <styleUrl>#icon-123</styleUrl>
+      <Point>
+        <coordinates>
+          -123.0126966,49.2256004,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Central Park - Trail of Hope</name>
+      <description><![CDATA[Statistics computed from imported data<br><br>Sunday, August 11, 2024, 5:10 AM PDT<br>Distance: 0.6 miles<br>Duration: 0 minutes and 28 seconds<br>Average Speed: 77.8 mph<br>Minimum Elevation: 422 feet<br>Maximum Elevation: 422 feet<br>Total climb: 0 feet<br>Total descent: 0 feet]]></description>
+      <styleUrl>#line-0288D1-5000</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -123.02349,49.22924,0
+          -123.02323,49.22908,0
+          -123.023,49.22887,0
+          -123.02284,49.22875,0
+          -123.02259,49.22873,0
+          -123.022,49.22873,0
+          -123.02179,49.22871,0
+          -123.0215,49.22861,0
+          -123.02118,49.22847,0
+          -123.02113,49.22842,0
+          -123.02072,49.22825,0
+          -123.02027,49.22808,0
+          -123.01962,49.22788,0
+          -123.01925,49.22766,0
+          -123.019,49.22749,0
+          -123.01844,49.22722,0
+          -123.01798,49.22699,0
+          -123.0174861,49.2267437,0
+          -123.01676,49.2265,0
+          -123.01535,49.226,0
+          -123.015135,49.2259237,0
+          -123.01492,49.2259,0
+          -123.01431,49.22579,0
+          -123.01402,49.22575,0
+          -123.01366,49.22568,0
+          -123.01304,49.22565,0
+          -123.0126966,49.2256004,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>
