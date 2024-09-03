@@ -14,7 +14,8 @@ struct MapView: View {
     @Binding var viewport: Viewport
     var locationProvider: AppleLocationProvider? = nil
 
-    var trails: [Trail]
+    let trails: [Trail]
+    let recordingTrail: Trail?
     @Binding var boundaries: [Boundary]
             
     func followLocation(_ follow: Bool) {
@@ -39,12 +40,20 @@ struct MapView: View {
                         .lineColor(UIColor.systemBlue.withAlphaComponent(0.5))
                         .lineWidth(1.5)
                         .lineJoin(.round)
-                    
                 }
                 
                 // Trails second (on top of boundaries)
                 ForEvery(trails) { trail in
                     PolylineAnnotation(lineCoordinates: trail.coordinates.sorted().map {
+                        CLLocationCoordinate2D(coordinate: $0)
+                    })
+                    .lineColor(UIColor.systemBlue.withAlphaComponent(0.9))
+                    .lineWidth(2.5)
+                    .lineJoin(.round)
+                }
+                
+                if let recordingTrail = recordingTrail {
+                    PolylineAnnotation(lineCoordinates: recordingTrail.coordinates.sorted().map {
                         CLLocationCoordinate2D(coordinate: $0)
                     })
                     .lineColor(UIColor.systemRed.withAlphaComponent(0.9))
@@ -93,8 +102,8 @@ struct MapView: View {
     @Previewable @State var boundaries = [
         Boundary.infiniteLoop()
     ]
-    var trails: [Trail] = []
-    MapView(viewport: $viewport, trails: trails, boundaries: $boundaries)
+    let trails: [Trail] = []
+    MapView(viewport: $viewport, trails: trails, recordingTrail: nil, boundaries: $boundaries)
         .modelContainer(for: allModels, inMemory: true)
         .ignoresSafeArea()
 }

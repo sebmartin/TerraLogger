@@ -36,8 +36,9 @@ struct MainView: View {
         geometryPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     )
 
-    @Query(filter: #Predicate<Trail> { $0.draft == false })
-    var trails: [Trail]
+    @Query var allTrails: [Trail]
+    var completedTrails: [Trail] { allTrails.filter { $0.status == .complete } }
+    var recordingTrail: Trail? { allTrails.first { $0.status == .recording } }
     
     @State var boundaries: [Boundary] = [
         Boundary.infiniteLoop(),
@@ -45,11 +46,10 @@ struct MainView: View {
     ]
         
     init() {
-        var descriptor = FetchDescriptor(
-            predicate: #Predicate<Trail> { !$0.draft }
-        )
+        // Prefetch coordinates for each trail
+        var descriptor = FetchDescriptor<Trail>()
         descriptor.relationshipKeyPathsForPrefetching = [\Trail.coordinates]
-        _trails = Query(descriptor)
+        _allTrails = Query(descriptor)
     }
 
     @State var presentedSheet: MapSheet?
@@ -60,7 +60,8 @@ struct MainView: View {
             MapView(
                 viewport: $viewport,
                 locationProvider: locationProvider,
-                trails: trails,
+                trails: completedTrails,
+                recordingTrail: recordingTrail,
                 boundaries: $boundaries
             )
             .edgesIgnoringSafeArea(.all)
@@ -84,7 +85,7 @@ struct MainView: View {
             NavigationView {
                 switch sheet {
                 case .trails:
-                    TrailsSheet()
+                    TrailsSheet(trails: self.allTrails)
                 case .pins:
                     Text("pins")
                 case .favourites:
@@ -107,14 +108,18 @@ struct MainView: View {
     func startRecordingTrail() {
         if stopTracking != nil {
             stopRecordingTrail()
+            return
         }
         
         var coordinateOrder = 0
-        let trail = Trail(name: "Name", coordinates: [], draft: false)
+        let trail = Trail(name: "Name", coordinates: [], status: .recording, source: .recorded)
         context.insert(trail)
         try? context.save()
         
-        stopTracking = locationProvider.onLocationUpdate.sink { locations in
+        stopTracking = locationProvider.onLocationUpdate.sink(receiveCompletion: { _ in
+            trail.status = .complete
+            try? context.save()
+        }) { locations in
             for location in locations {
                 trail.coordinates.append(
                     Coordinate(
@@ -131,6 +136,10 @@ struct MainView: View {
     
     func stopRecordingTrail() {
         stopTracking?.cancel()
+        if let recordingTrail = recordingTrail {
+            recordingTrail.status = .complete
+            try? context.save()
+        }
         stopTracking = nil
     }
 }

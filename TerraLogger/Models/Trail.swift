@@ -7,10 +7,27 @@
 import SwiftData
 import Foundation
 
+enum TrailStatus: String, Codable {
+    case importing = "importing"
+    case recording = "recording"
+    case complete = "complete"
+}
+
+enum TrailSource: String, Codable {
+    case unknown = "unknown"
+    case imported = "imported"
+    case recorded = "recorded"
+}
+
 @Model
 final class Trail {
     var name: String
-    var draft: Bool
+    var statusRaw: String
+    var status: TrailStatus {
+        get { TrailStatus(rawValue: statusRaw)! }
+        set { statusRaw = newValue.rawValue }
+    }
+    var source: TrailSource
     var createdAt: Date
     var startedAt: Date?
     var endedAt: Date?
@@ -18,9 +35,10 @@ final class Trail {
     
     @Relationship(deleteRule: .cascade) var coordinates: [Coordinate]
     
-    init(name: String, coordinates: [Coordinate], draft: Bool = true, startedAt: Date? = nil, endedAt: Date? = nil) {
+    init(name: String, coordinates: [Coordinate], status: TrailStatus, source: TrailSource, startedAt: Date? = nil, endedAt: Date? = nil) {
         self.name = name
-        self.draft = draft
+        self.statusRaw = status.rawValue
+        self.source = source
         self.startedAt = startedAt
         self.endedAt = endedAt
         self.createdAt = Date.now
