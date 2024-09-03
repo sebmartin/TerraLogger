@@ -72,7 +72,21 @@ extension Boundary {
     
     static func centralPark() -> Self {
         return Self(name: "Central Park", coordinates: [
-            
+            Coordinate(40.7999042, -73.9586211),
+            Coordinate(40.7684642, -73.9814987),
+            Coordinate(40.7683757, -73.9815029),
+            Coordinate(40.7681084, -73.981271),
+            Coordinate(40.7678987, -73.9812151),
+            Coordinate(40.7645946, -73.9736083),
+            Coordinate(40.7639348, -73.9740922),
+            Coordinate(40.7637006, -73.9735138),
+            Coordinate(40.7966372, -73.9495364),
+            Coordinate(40.7968063, -73.9496953),
+            Coordinate(40.7970566, -73.9497254),
+            Coordinate(40.8004464, -73.9578244),
+            Coordinate(40.80032, -73.9580222),
+            Coordinate(40.8003032, -73.9582469),
+            Coordinate(40.7999042, -73.9586211)
         ])
     }
 }

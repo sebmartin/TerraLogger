@@ -24,17 +24,7 @@ struct TrailsSheet: View {
     @State private var searchText = ""
     
     @Environment(\.modelContext) private var modelContext
-    @Query var trails: [Trail]
-    
-    init(navPath: NavigationPath = NavigationPath(), importFile: Bool = false, searchText: String = "") {
-        self.navPath = navPath
-        self.importFile = importFile
-        self.searchText = searchText
-        
-        var descriptor = FetchDescriptor<Trail>()
-        descriptor.relationshipKeyPathsForPrefetching = [\Trail.coordinates]
-        _trails = Query(descriptor)
-    }
+    var trails: [Trail]
     
     var filteredTrails: [Trail] {
         get {
@@ -123,7 +113,7 @@ struct TrailsSheet: View {
                 if identifiers.count == 1, let identifier = identifiers.first {
                     // There's only one so assume it's wanted and flag it as presentable
                     if let trail = modelContext.model(for: identifier) as? Trail {
-                        trail.draft = false
+                        trail.status = .complete
                         try? modelContext.save()
                         navPath.append(trail)
                     }
@@ -164,13 +154,14 @@ struct TrailsSheet: View {
 
 #Preview {
     @Previewable @State var show = true
+    let trails: [Trail] = []
     
     MapButton("point.bottomleft.forward.to.point.topright.scurvepath") {
         show = true
     }
         .sheet(isPresented: $show) {
             NavigationView {
-                TrailsSheet()
+                TrailsSheet(trails: trails)
             }
         }
 }

@@ -17,7 +17,8 @@ import SwiftData
         do {
             let trails = try TrailImporter.from(url: url)
             trails.forEach {
-                $0.draft = true
+                $0.status = .importing
+                $0.source = .imported
                 self.modelContext.insert($0)
             }
             try modelContext.save()

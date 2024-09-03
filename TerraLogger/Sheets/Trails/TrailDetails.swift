@@ -36,5 +36,5 @@ struct TrailDetails: View {
     //    let url = Bundle.main.url(forResource: "trails.trail-of-hope", withExtension: "gpx")!
     //    let trails = try! TrailImporter.from(url: url)
     
-    TrailDetails(trail: Trail(name: "foo", coordinates: [], draft: false))
+    TrailDetails(trail: Trail(name: "foo", coordinates: [], status: .complete, source: .unknown))
 }
