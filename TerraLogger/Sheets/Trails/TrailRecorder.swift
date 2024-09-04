@@ -32,10 +32,7 @@ struct TrailRecorder {
     
     private func onLocationUpdate(locations: [Location]) {
         for location in locations {
-            let lat = location.coordinate.latitude
-            let lng = location.coordinate.longitude
-            let alt = location.altitude ?? 0.0 as Double
-            let coord = Coordinate(lat, lng, altitude: alt, recordedAt: Date.now)
+            let coord = Coordinate(location: location, recordedAt: Date.now)
             self.trail.coordinates.append(coord)
             logger.debug("Recorded new location: \(coord)")
         }

@@ -11,8 +11,8 @@ extension Trail {
         guard let geometry = placemark.geometry as? KMLLineString else {
             return nil
         }
-        let coordinates = geometry.coordinates.enumerated().map { order, coord in
-            Coordinate(from: coord, order: order)
+        let coordinates = geometry.coordinates.map { coord in
+            Coordinate(from: coord)
         }
         self.init(name: placemark.name, coordinates: coordinates, status: .importing, source: .imported)
     }

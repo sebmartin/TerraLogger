@@ -7,7 +7,12 @@
 import GPXKit
 
 extension Coordinate {
-    convenience init?(from trackpoint: TrackPoint, order: Int) {
-        self.init(trackpoint.latitude, trackpoint.longitude, altitude: trackpoint.elevation, order: order)
+    convenience init?(from trackpoint: TrackPoint) {
+        self.init(
+            trackpoint.latitude,
+            trackpoint.longitude,
+            altitude: trackpoint.elevation,
+            speed: trackpoint.speed?.converted(to: .metersPerSecond).value
+        )
     }
 }

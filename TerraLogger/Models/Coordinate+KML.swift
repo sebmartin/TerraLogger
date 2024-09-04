@@ -7,7 +7,7 @@
 import RCKML
 
 extension Coordinate {
-    convenience init(from coordinate: KMLCoordinate, order: Int) {
-        self.init(coordinate.latitude, coordinate.longitude, altitude: coordinate.altitude, order: order)
+    convenience init(from coordinate: KMLCoordinate) {
+        self.init(coordinate.latitude, coordinate.longitude, altitude: coordinate.altitude)
     }
 }
