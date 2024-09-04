@@ -8,8 +8,8 @@ import GPXKit
 
 extension Trail {
     convenience init?(fromGPX track: GPXTrack) {
-        let coordinates = track.trackPoints.enumerated().compactMap { order, point in
-            Coordinate(from: point, order: order)
+        let coordinates = track.trackPoints.compactMap { point in
+            Coordinate(from: point)
         }
         self.init(name: track.title, coordinates: coordinates, status: .importing, source: .imported)
     }
