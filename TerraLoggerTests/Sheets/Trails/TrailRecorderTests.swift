@@ -13,7 +13,7 @@ import Combine
 
 struct TrailRecorderTests {
     @Test func receivingLocationsUpdatesTrailCoordinates() async throws {
-        var trail = Trail(name: "foo", coordinates: [])
+        var trail = Trail(name: "foo", coordinates: [], status: .recording, source: .recorded)
         let trailBinding = Binding {
             trail
         } set: {
@@ -38,13 +38,13 @@ struct TrailRecorderTests {
 
 
 
-class FakeLocationProvider: LocationUpdatable {    
+class FakeLocationProvider: LocationUpdatable {
     @Published var locations: [Location] = []
     private lazy var signal: Signal<Location> = {
         locations.publisher.eraseToSignal()
     }()
     
-    var onLocationUpdate: Signal<Location> {
+    var onLocationUpdate: Signal<[Location]> {
         get {
             return self.signal
         }
