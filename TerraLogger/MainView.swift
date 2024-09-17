@@ -5,10 +5,14 @@
 //  Created by Seb Martin on 2024-07-15.
 //
 
+import os
 import SwiftUI
 import SwiftData
 import Combine
+import ActivityKit
 @_spi(Experimental) import MapboxMaps
+
+fileprivate let logger = Logger.main
 
 enum MapSheet: String, Identifiable {
     case trails
@@ -111,25 +115,58 @@ struct MainView: View {
             return
         }
         
-        var coordinateOrder = 0
         let trail = Trail(name: "Name", coordinates: [], status: .recording, source: .recorded)
         context.insert(trail)
         try? context.save()
         
+        let startTime = Date.now
+        do {
+            let attributes = TrailAttributes(name: trail.name)
+            let initialState = TrailAttributes.ContentState(
+                distance: 0.0, duration: .seconds(0), totalElevation: 0.0, accuracy: 0, speed: 0
+            )
+            let activity = try Activity.request(
+                attributes: attributes,
+                content: .init(state: initialState, staleDate: nil),
+                pushType: nil
+            )
+            logger.info("Started live activity with id: \(activity.id)")
+        } catch {
+            print("Error starting live activity: \(error.localizedDescription)")
+        }
+        
+        var lastCoordinate: Coordinate? = nil
         stopTracking = locationProvider.onLocationUpdate.sink(receiveCompletion: { _ in
             trail.status = .complete
             try? context.save()
         }) { locations in
             for location in locations {
-                trail.coordinates.append(
-                    Coordinate(
-                        location: location,
-                        recordedAt: Date.now
-                    )
+                // Record the new coordinate
+                let coordinate = Coordinate(
+                    location: location,
+                    recordedAt: Date.now
                 )
-                coordinateOrder += 1
+                trail.coordinates.append(coordinate)
+                
+                // Update the live activity
+                updateTrailActivity(distance: coordinate.distance(to: lastCoordinate))
+//                let distance = coordinate.distance(to: lastCoordinate)
+                lastCoordinate = coordinate
             }
             try? context.save()
+        }
+    }
+    
+    @MainActor
+    private func updateTrailActivity(distance: Double) {
+        Task {
+            for activity in Activity<TrailAttributes>.activities {
+                let updatedState = TrailAttributes.ContentState(
+                    distance: 0.0, duration: .seconds(0), totalElevation: 0.0, accuracy: 0, speed: 0
+                )
+                logger.info("Updating activity with distance: \(distance)")
+                await activity.update(.init(state: updatedState, staleDate: nil), timestamp: Date.now)
+            }
         }
     }
     
