@@ -64,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
             endingLineNumber = "11"
-            landmarkName = "init(from:order:)"
+            landmarkName = "init(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,38 +80,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
             endingLineNumber = "102"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "B04A0D80-15D0-48FD-BA2C-E4D986B0402A - 1449a73951a891f7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (TerraLogger.TrailsNavDestination) -&gt; SwiftUI._ConditionalContent&lt;TerraLogger.RecordTrailView, TerraLogger.ImportTrailView&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.fileImporter(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, allowedContentTypes: Swift.Array&lt;UniformTypeIdentifiers.UTType&gt;, onCompletion: (Swift.Result&lt;Foundation.URL, Swift.Error&gt;) -&gt; ()) -&gt; some&gt;&gt;.0 in TerraLogger.TrailsSheet.body.getter : some"
-                  moduleName = "TerraLogger.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/seb/src/TerraLogger/TerraLogger/Sheets/Trails/TrailsSheet.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102">
-               </Location>
-               <Location
-                  uuid = "B04A0D80-15D0-48FD-BA2C-E4D986B0402A - c222916319a37f2f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (TerraLogger.Trail) -&gt; TerraLogger.Trail in closure #4 (TerraLogger.TrailsNavDestination) -&gt; SwiftUI._ConditionalContent&lt;TerraLogger.RecordTrailView, TerraLogger.ImportTrailView&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.fileImporter(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, allowedContentTypes: Swift.Array&lt;UniformTypeIdentifiers.UTType&gt;, onCompletion: (Swift.Result&lt;Foundation.URL, Swift.Error&gt;) -&gt; ()) -&gt; some&gt;&gt;.0 in TerraLogger.TrailsSheet.body.getter : some"
-                  moduleName = "TerraLogger.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/seb/src/TerraLogger/TerraLogger/Sheets/Trails/TrailsSheet.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102">
-               </Location>
-            </Locations>
+            landmarkName = "handleRecordTrail()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
