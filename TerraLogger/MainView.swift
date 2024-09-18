@@ -124,8 +124,7 @@ struct MainView: View {
                 trail.coordinates.append(
                     Coordinate(
                         location: location,
-                        recordedAt: Date.now,
-                        order: coordinateOrder
+                        recordedAt: Date.now
                     )
                 )
                 coordinateOrder += 1
