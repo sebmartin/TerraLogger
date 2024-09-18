@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "960A0A622C46117500468DE7"
+               BlueprintIdentifier = "968B6F4F2C993358004698DF"
                BuildableName = "TerraLogger.app"
                BlueprintName = "TerraLogger"
                ReferencedContainer = "container:TerraLogger.xcodeproj">
@@ -68,7 +68,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "960A0A622C46117500468DE7"
+            BlueprintIdentifier = "968B6F4F2C993358004698DF"
             BuildableName = "TerraLogger.app"
             BlueprintName = "TerraLogger"
             ReferencedContainer = "container:TerraLogger.xcodeproj">
@@ -91,7 +91,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "960A0A622C46117500468DE7"
+            BlueprintIdentifier = "968B6F4F2C993358004698DF"
             BuildableName = "TerraLogger.app"
             BlueprintName = "TerraLogger"
             ReferencedContainer = "container:TerraLogger.xcodeproj">
