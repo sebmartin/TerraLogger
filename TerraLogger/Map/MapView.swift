@@ -9,13 +9,15 @@ import Foundation
 @_spi(Experimental) import MapboxMaps
 import SwiftUI
 import SwiftData
+import os
+
+fileprivate let logger = Logger.main
 
 struct MapView: View {
     @Binding var viewport: Viewport
     var locationProvider: AppleLocationProvider? = nil
-
-    let trails: [Trail]
-    let recordingTrail: Trail?
+    var completedTrails: [Trail]
+    var recordingTrail: Trail?
     @Binding var boundaries: [Boundary]
             
     func followLocation(_ follow: Bool) {
@@ -43,7 +45,7 @@ struct MapView: View {
                 }
                 
                 // Trails second (on top of boundaries)
-                ForEvery(trails) { trail in
+                ForEvery(completedTrails) { trail in
                     PolylineAnnotation(lineCoordinates: trail.coordinates.sorted().map {
                         CLLocationCoordinate2D(coordinate: $0)
                     })
@@ -84,8 +86,6 @@ struct MapView: View {
             }
         }
     }
-    
-    
 }
 
 #Preview {
@@ -103,7 +103,7 @@ struct MapView: View {
         Boundary.infiniteLoop()
     ]
     let trails: [Trail] = []
-    MapView(viewport: $viewport, trails: trails, recordingTrail: nil, boundaries: $boundaries)
+    MapView(viewport: $viewport, completedTrails: trails, recordingTrail: nil, boundaries: $boundaries)
         .modelContainer(for: allModels, inMemory: true)
         .ignoresSafeArea()
 }

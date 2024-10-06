@@ -55,7 +55,7 @@ extension Coordinate {
             sin(Δλ / 2) * sin(Δλ / 2)
         let c = 2 * atan2(sqrt(a), sqrt(1 - a))
         let d = R * c
-        return d
+        return d // meters
     }
 }
 

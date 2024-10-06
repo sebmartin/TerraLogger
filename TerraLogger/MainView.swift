@@ -26,7 +26,7 @@ enum MapSheet: String, Identifiable {
 struct MainView: View {
     @Environment(\.modelContext) var context
     let locationProvider = AppleLocationProvider()
-    @State var stopTracking: AnyCancellable? = nil
+    var trailRecorder = TrailRecorder()
 
     // Initial positioning of the viewport
     @State var viewport = Viewport.overview(
@@ -39,10 +39,14 @@ struct MainView: View {
         ),
         geometryPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     )
-
+    
     @Query var allTrails: [Trail]
-    var completedTrails: [Trail] { allTrails.filter { $0.status == .complete } }
-    var recordingTrail: Trail? { allTrails.first { $0.status == .recording } }
+    var completedTrails: [Trail] { allTrails.filter { $0.persistentModelID != self.recordingTrail?.persistentModelID } }
+    var recordingTrail: Trail? {
+        allTrails
+            .sorted { $0.createdAt < $1.createdAt }
+            .first { $0.status == .recording }
+    }
     
     @State var boundaries: [Boundary] = [
         Boundary.infiniteLoop(),
@@ -64,7 +68,7 @@ struct MainView: View {
             MapView(
                 viewport: $viewport,
                 locationProvider: locationProvider,
-                trails: completedTrails,
+                completedTrails: completedTrails,
                 recordingTrail: recordingTrail,
                 boundaries: $boundaries
             )
@@ -74,7 +78,20 @@ struct MainView: View {
                 VStack(alignment: .trailing) {
                     MapButton("location.circle") { centerOnLocation() }
                     MapButton("map") {
-                        startRecordingTrail()
+                        // TODO: Move this to the trails sheet (temp)
+                        let trailRecorder = self.trailRecorder
+                        Task {
+                            if trailRecorder.isRecording {
+                                await trailRecorder.stopRecording()
+                            } else {
+                                let trailId = await trailRecorder.startRecording(
+                                    trailName: "New Trail",
+                                    modelContainer: self.context.container
+                                )
+                                let x = String(describing: trailId)
+                                logger.info("trail: \(x)")
+                            }
+                        }
                     }
                     MapButton("tag")
                 }
@@ -109,54 +126,6 @@ struct MainView: View {
     
     // MARK: - Trails
     
-    func startRecordingTrail() {
-        if stopTracking != nil {
-            stopRecordingTrail()
-            return
-        }
-        
-        let trail = Trail(name: "Name", coordinates: [], status: .recording, source: .recorded)
-        context.insert(trail)
-        try? context.save()
-        
-        let startTime = Date.now
-        do {
-            let attributes = TrailAttributes(name: trail.name)
-            let initialState = TrailAttributes.ContentState(
-                distance: 0.0, duration: .seconds(0), totalElevation: 0.0, accuracy: 0, speed: 0
-            )
-            let activity = try Activity.request(
-                attributes: attributes,
-                content: .init(state: initialState, staleDate: nil),
-                pushType: nil
-            )
-            logger.info("Started live activity with id: \(activity.id)")
-        } catch {
-            print("Error starting live activity: \(error.localizedDescription)")
-        }
-        
-        var lastCoordinate: Coordinate? = nil
-        stopTracking = locationProvider.onLocationUpdate.sink(receiveCompletion: { _ in
-            trail.status = .complete
-            try? context.save()
-        }) { locations in
-            for location in locations {
-                // Record the new coordinate
-                let coordinate = Coordinate(
-                    location: location,
-                    recordedAt: Date.now
-                )
-                trail.coordinates.append(coordinate)
-                
-                // Update the live activity
-                updateTrailActivity(distance: coordinate.distance(to: lastCoordinate))
-//                let distance = coordinate.distance(to: lastCoordinate)
-                lastCoordinate = coordinate
-            }
-            try? context.save()
-        }
-    }
-    
     @MainActor
     private func updateTrailActivity(distance: Double) {
         Task {
@@ -168,15 +137,6 @@ struct MainView: View {
                 await activity.update(.init(state: updatedState, staleDate: nil), timestamp: Date.now)
             }
         }
-    }
-    
-    func stopRecordingTrail() {
-        stopTracking?.cancel()
-        if let recordingTrail = recordingTrail {
-            recordingTrail.status = .complete
-            try? context.save()
-        }
-        stopTracking = nil
     }
 }
 
