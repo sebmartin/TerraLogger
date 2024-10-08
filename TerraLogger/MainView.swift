@@ -25,6 +25,7 @@ enum MapSheet: String, Identifiable {
 
 struct MainView: View {
     @Environment(\.modelContext) var context
+    
     let locationProvider = AppleLocationProvider()
     var trailRecorder = TrailRecorder()
 
@@ -39,15 +40,20 @@ struct MainView: View {
         ),
         geometryPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     )
+    @State var cameraState: CameraState? = nil
     
+    // Trail data
     @Query var allTrails: [Trail]
     var completedTrails: [Trail] { allTrails.filter { $0.persistentModelID != self.recordingTrail?.persistentModelID } }
-    var recordingTrail: Trail? {
-        allTrails
+    private var recordingTrailQuery: Trail? {
+        guard trailRecorder.isRecording else { return nil }
+        return allTrails
             .sorted { $0.createdAt < $1.createdAt }
             .first { $0.status == .recording }
     }
+    @State var recordingTrail: Trail? = nil
     
+    // Boundary data
     @State var boundaries: [Boundary] = [
         Boundary.infiniteLoop(),
         Boundary.centralPark()
@@ -67,16 +73,17 @@ struct MainView: View {
         ZStack  {
             MapView(
                 viewport: $viewport,
+                cameraState: $cameraState,
                 locationProvider: locationProvider,
                 completedTrails: completedTrails,
-                recordingTrail: recordingTrail,
+                recordingTrail: $recordingTrail,
                 boundaries: $boundaries
             )
             .edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading) {
                 VStack(alignment: .trailing) {
-                    MapButton("location.circle") { centerOnLocation() }
+                    MapButton("location.circle") { centerOnUserLocation() }
                     MapButton("map") {
                         // TODO: Move this to the trails sheet (temp)
                         let trailRecorder = self.trailRecorder
@@ -116,11 +123,27 @@ struct MainView: View {
                 }
             }
         }
+        
+        // This is a bit of a hack to get around an issue with the MapboxMap where annotations
+        // are not updated even if the model changes. Adding and removing is the recommended
+        // way to force the map to update its annotations.
+        // - recordingTrailQuery updates when the @Query responds to changes
+        // - recordingTrail is the @State var bound to the map
+        .onChange(of: recordingTrailQuery) { old, new in
+            recordingTrail = recordingTrailQuery
+        }
+        .onChange(of: recordingTrailQuery?.coordinates) { old, new in
+            recordingTrail = nil  // removes the annotation
+            recordingTrail = recordingTrailQuery  // adds it back forcing an update
+        }
     }
     
-    func centerOnLocation() {
-        if let location = locationProvider.latestLocation {
-            viewport = .camera(center: location.coordinate)
+    func centerOnUserLocation() {
+        switch (viewport) {
+        case .idle:
+            viewport = .followPuck(zoom: cameraState?.zoom ?? 18)
+        default:
+            viewport = .idle
         }
     }
     
