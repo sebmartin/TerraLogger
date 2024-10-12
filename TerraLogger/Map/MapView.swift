@@ -42,23 +42,11 @@ struct MapView: View {
                 
                 // Trails second (on top of boundaries)
                 ForEvery(completedTrails) { trail in
-                    PolylineAnnotation(lineCoordinates: trail.coordinates.sorted().map {
-                        CLLocationCoordinate2D(coordinate: $0)
-                    })
-                    .lineColor(UIColor.systemBlue.withAlphaComponent(0.9))
-                    .lineWidth(8.0)
-                    .lineJoin(.round)
+                    trail.annotation
                 }
                 
                 if let recordingTrail = recordingTrail {
-                    PolylineAnnotation(lineCoordinates: recordingTrail.coordinates.sorted().map {
-                        CLLocationCoordinate2D(coordinate: $0)
-                    })
-                    .lineColor(UIColor.systemRed.withAlphaComponent(0.9))
-                    .lineWidth(9.0)
-                    .lineJoin(.round)
-                    .lineBorderColor(UIColor.darkGray)
-                    .lineBorderWidth(2.0)
+                    recordingTrail.annotation
                 }
                 
                 // User position is last to render above other annotations
