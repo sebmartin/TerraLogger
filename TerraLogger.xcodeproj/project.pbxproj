@@ -11,12 +11,42 @@
 		968B70112C9935EA004698DF /* RCKML in Frameworks */ = {isa = PBXBuildFile; productRef = 968B70102C9935EA004698DF /* RCKML */; };
 		968B70132C9935F6004698DF /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 968B70122C9935F6004698DF /* MapboxMaps */; };
 		968B70152C993604004698DF /* GPXKit in Frameworks */ = {isa = PBXBuildFile; productRef = 968B70142C993604004698DF /* GPXKit */; };
+		96DDE6D52C9A5F0900D99F5D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DDE6D42C9A5F0900D99F5D /* WidgetKit.framework */; };
+		96DDE6D72C9A5F0900D99F5D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DDE6D62C9A5F0900D99F5D /* SwiftUI.framework */; };
+		96DDE6E92C9A5F0C00D99F5D /* TrailRecordingActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 96DDE6D32C9A5F0900D99F5D /* TrailRecordingActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		96DDE6E62C9A5F0C00D99F5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 960A0A5B2C46117500468DE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96DDE6D22C9A5F0900D99F5D;
+			remoteInfo = TrailRecordingActivityExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		96DDE6E82C9A5F0C00D99F5D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				96DDE6E92C9A5F0C00D99F5D /* TrailRecordingActivityExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		960A0A752C46117700468DE7 /* TerraLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TerraLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		960A0A7F2C46117700468DE7 /* TerraLoggerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TerraLoggerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		968B6F502C993358004698DF /* TerraLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TerraLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96DDE6D32C9A5F0900D99F5D /* TrailRecordingActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TrailRecordingActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		96DDE6D42C9A5F0900D99F5D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		96DDE6D62C9A5F0900D99F5D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -26,6 +56,23 @@
 				Info.plist,
 			);
 			target = 968B6F4F2C993358004698DF /* TerraLogger */;
+		};
+		96DDE70B2C9A5FBE00D99F5D /* Exceptions for "TrailRecordingActivity" folder in "TerraLogger" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				TrailActivityView.swift,
+				TrailAttributes.swift,
+				TrailRecordingActivityControl.swift,
+				TrailRecordingActivityLiveActivity.swift,
+			);
+			target = 968B6F4F2C993358004698DF /* TerraLogger */;
+		};
+		96DDE70C2C9A5FEF00D99F5D /* Exceptions for "TrailRecordingActivity" folder in "TrailRecordingActivityExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 96DDE6D22C9A5F0900D99F5D /* TrailRecordingActivityExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -46,6 +93,15 @@
 				968B700F2C9935AB004698DF /* Exceptions for "TerraLogger" folder in "TerraLogger" target */,
 			);
 			path = TerraLogger;
+			sourceTree = "<group>";
+		};
+		96DDE6FD2C9A5F8900D99F5D /* TrailRecordingActivity */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				96DDE70B2C9A5FBE00D99F5D /* Exceptions for "TrailRecordingActivity" folder in "TerraLogger" target */,
+				96DDE70C2C9A5FEF00D99F5D /* Exceptions for "TrailRecordingActivity" folder in "TrailRecordingActivityExtension" target */,
+			);
+			path = TrailRecordingActivity;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,6 +132,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96DDE6D02C9A5F0900D99F5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96DDE6D72C9A5F0900D99F5D /* SwiftUI.framework in Frameworks */,
+				96DDE6D52C9A5F0900D99F5D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,6 +150,7 @@
 				968B6F512C993358004698DF /* TerraLogger */,
 				960A0A782C46117700468DE7 /* TerraLoggerTests */,
 				960A0A822C46117700468DE7 /* TerraLoggerUITests */,
+				96DDE6FD2C9A5F8900D99F5D /* TrailRecordingActivity */,
 				960A0A642C46117500468DE7 /* Products */,
 				968BFD902C46176E00C6C9F9 /* Frameworks */,
 			);
@@ -96,6 +162,7 @@
 				968B6F502C993358004698DF /* TerraLogger.app */,
 				960A0A752C46117700468DE7 /* TerraLoggerTests.xctest */,
 				960A0A7F2C46117700468DE7 /* TerraLoggerUITests.xctest */,
+				96DDE6D32C9A5F0900D99F5D /* TrailRecordingActivityExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +170,8 @@
 		968BFD902C46176E00C6C9F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96DDE6D42C9A5F0900D99F5D /* WidgetKit.framework */,
+				96DDE6D62C9A5F0900D99F5D /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,11 +231,13 @@
 				968B6F4C2C993358004698DF /* Sources */,
 				968B6F4D2C993358004698DF /* Frameworks */,
 				968B6F4E2C993358004698DF /* Resources */,
+				96DDE6E82C9A5F0C00D99F5D /* Embed Foundation Extensions */,
 				968B70162C993840004698DF /* Copy mapbox credentials */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				96DDE6E72C9A5F0C00D99F5D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				968B6F512C993358004698DF /* TerraLogger */,
@@ -180,6 +251,28 @@
 			productName = TerraLogger;
 			productReference = 968B6F502C993358004698DF /* TerraLogger.app */;
 			productType = "com.apple.product-type.application";
+		};
+		96DDE6D22C9A5F0900D99F5D /* TrailRecordingActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96DDE6EA2C9A5F0C00D99F5D /* Build configuration list for PBXNativeTarget "TrailRecordingActivityExtension" */;
+			buildPhases = (
+				96DDE6CF2C9A5F0900D99F5D /* Sources */,
+				96DDE6D02C9A5F0900D99F5D /* Frameworks */,
+				96DDE6D12C9A5F0900D99F5D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				96DDE6FD2C9A5F8900D99F5D /* TrailRecordingActivity */,
+			);
+			name = TrailRecordingActivityExtension;
+			packageProductDependencies = (
+			);
+			productName = TrailRecordingActivityExtension;
+			productReference = 96DDE6D32C9A5F0900D99F5D /* TrailRecordingActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -202,6 +295,9 @@
 					968B6F4F2C993358004698DF = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					96DDE6D22C9A5F0900D99F5D = {
+						CreatedOnToolsVersion = 16.0;
+					};
 				};
 			};
 			buildConfigurationList = 960A0A5E2C46117500468DE7 /* Build configuration list for PBXProject "TerraLogger" */;
@@ -212,6 +308,7 @@
 				Base,
 			);
 			mainGroup = 960A0A5A2C46117500468DE7;
+			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				965E41AC2C4625F70015683D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 				967AE2732C48BA3B00E534D6 /* XCRemoteSwiftPackageReference "GPXKit" */,
@@ -225,6 +322,7 @@
 				968B6F4F2C993358004698DF /* TerraLogger */,
 				960A0A742C46117700468DE7 /* TerraLoggerTests */,
 				960A0A7E2C46117700468DE7 /* TerraLoggerUITests */,
+				96DDE6D22C9A5F0900D99F5D /* TrailRecordingActivityExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -251,13 +349,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96DDE6D12C9A5F0900D99F5D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		968B70162C993840004698DF /* Copy mapbox credentials */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -272,7 +377,7 @@
 			outputPaths = (
 				"",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Look for a global file named 'mapbox' or '.mapbox' within the home directory\ntoken_file=\"$PROJECT_DIR/.mapbox\"\ntoken_file2=\"$PROJECT_DIR/mapbox\"\ntoken=\"$(cat $token_file 2>/dev/null || cat $token_file2 2>/dev/null)\"\ncat $token_file\nif [ \"$token\" ]; then\n  plutil -replace MBXAccessToken -string $token \"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\nelse\n  echo 'warning: Missing Mapbox access token'\n  open 'https://account.mapbox.com/access-tokens/'\n  echo \"warning: Get an access token from <https://account.mapbox.com/access-tokens/>, then create a new file at $token_file or $token_file2 that contains the access token.\"\nfi\n";
 		};
@@ -300,7 +405,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96DDE6CF2C9A5F0900D99F5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		96DDE6E72C9A5F0C00D99F5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96DDE6D22C9A5F0900D99F5D /* TrailRecordingActivityExtension */;
+			targetProxy = 96DDE6E62C9A5F0C00D99F5D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		960A0A872C46117700468DE7 /* Debug */ = {
@@ -502,6 +622,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TerraLogger/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your precise location is used to record new trails, show your location on the map, and help improve the map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your precise location is used to record new trails, show your location on the map, and help improve the map.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -514,8 +638,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -532,6 +660,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TerraLogger/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your precise location is used to record new trails, show your location on the map, and help improve the map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your precise location is used to record new trails, show your location on the map, and help improve the map.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -544,6 +676,66 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		96DDE6EB2C9A5F0C00D99F5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGQ92828S6;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrailRecordingActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TrailRecordingActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLogger.TrailRecordingActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		96DDE6EC2C9A5F0C00D99F5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZGQ92828S6;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrailRecordingActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TrailRecordingActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = in.sebmart.TerraLogger.TrailRecordingActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -585,6 +777,15 @@
 			buildConfigurations = (
 				968B6F5E2C99335A004698DF /* Debug */,
 				968B6F5F2C99335A004698DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96DDE6EA2C9A5F0C00D99F5D /* Build configuration list for PBXNativeTarget "TrailRecordingActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96DDE6EB2C9A5F0C00D99F5D /* Debug */,
+				96DDE6EC2C9A5F0C00D99F5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

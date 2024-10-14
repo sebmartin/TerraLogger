@@ -9,28 +9,26 @@ import Foundation
 @_spi(Experimental) import MapboxMaps
 import SwiftUI
 import SwiftData
+import os
+import MapboxMaps
+
+fileprivate let logger = Logger.main
 
 struct MapView: View {
-    @Binding var viewport: Viewport
-    var locationProvider: AppleLocationProvider? = nil
-
-    let trails: [Trail]
-    let recordingTrail: Trail?
-    @Binding var boundaries: [Boundary]
-            
-    func followLocation(_ follow: Bool) {
-        if follow {
-            viewport = .followPuck(zoom: 16.5, bearing: .heading, pitch: 60)
-        } else {
-            viewport = .idle
-        }
-    }
-        
     @Environment(\.modelContext) var context
+    
+    @Binding var viewport: Viewport
+    @Binding var cameraState: CameraState?
+    var locationProvider: AppleLocationProvider? = nil
+    var completedTrails: [Trail]
+    @Binding var recordingTrail: Trail?
+    @Binding var boundaries: [Boundary]
+    
+    @State private var onCameraChangedCancellable: AnyCancelable? = nil
     
     var body: some View {
         MapReader { mapProxy in
-            Map(viewport: self.$viewport) {
+            Map(viewport: $viewport) {
                 // Boundaries first
                 ForEvery(boundaries) { boundary in
                     boundary.polygonAnnotation()
@@ -43,22 +41,12 @@ struct MapView: View {
                 }
                 
                 // Trails second (on top of boundaries)
-                ForEvery(trails) { trail in
-                    PolylineAnnotation(lineCoordinates: trail.coordinates.sorted().map {
-                        CLLocationCoordinate2D(coordinate: $0)
-                    })
-                    .lineColor(UIColor.systemBlue.withAlphaComponent(0.9))
-                    .lineWidth(2.5)
-                    .lineJoin(.round)
+                ForEvery(completedTrails) { trail in
+                    trail.annotation
                 }
                 
                 if let recordingTrail = recordingTrail {
-                    PolylineAnnotation(lineCoordinates: recordingTrail.coordinates.sorted().map {
-                        CLLocationCoordinate2D(coordinate: $0)
-                    })
-                    .lineColor(UIColor.systemRed.withAlphaComponent(0.9))
-                    .lineWidth(2.5)
-                    .lineJoin(.round)
+                    recordingTrail.annotation
                 }
                 
                 // User position is last to render above other annotations
@@ -82,11 +70,18 @@ struct MapView: View {
                     )
                 }
             }
+            .task {
+                // Keep track of the camera state
+                if let map = mapProxy.map {
+                    self.onCameraChangedCancellable = map.onCameraChanged.observe { cameraChange in
+                        cameraState = map.cameraState
+                    }
+                }
+            }
         }
     }
-    
-    
 }
+
 
 #Preview {
     @Previewable @State var viewport = Viewport.overview(
@@ -99,11 +94,13 @@ struct MapView: View {
         ),
         geometryPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
     )
+    @Previewable @State var recordingTrail: Trail? = nil
+    @Previewable @State var cameraState: CameraState? = nil
     @Previewable @State var boundaries = [
         Boundary.infiniteLoop()
     ]
     let trails: [Trail] = []
-    MapView(viewport: $viewport, trails: trails, recordingTrail: nil, boundaries: $boundaries)
+    MapView(viewport: $viewport, cameraState: $cameraState, completedTrails: trails, recordingTrail: $recordingTrail, boundaries: $boundaries)
         .modelContainer(for: allModels, inMemory: true)
         .ignoresSafeArea()
 }
