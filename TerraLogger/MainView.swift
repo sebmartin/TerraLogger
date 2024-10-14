@@ -25,7 +25,8 @@ enum MapSheet: String, Identifiable {
 
 struct MainView: View {
     @Environment(\.modelContext) var context
-    
+    let nc = NotificationCenter.default
+
     let locationProvider = AppleLocationProvider()
     var trailRecorder = TrailRecorder()
 
@@ -136,6 +137,10 @@ struct MainView: View {
             recordingTrail = nil  // removes the annotation
             recordingTrail = recordingTrailQuery  // adds it back forcing an update
         }
+        
+        .onReceive(nc.publisher(for: Notification.Name.requestedStartRecordingTrail)) { _ in
+            
+        }
     }
     
     func centerOnUserLocation() {
@@ -148,6 +153,10 @@ struct MainView: View {
     }
     
     // MARK: - Trails
+    
+    private func startRecordingTrail(trail: Trail) {
+        
+    }
     
     @MainActor
     private func updateTrailActivity(distance: Double) {

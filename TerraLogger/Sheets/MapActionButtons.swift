@@ -13,7 +13,7 @@ struct MapActionButtons: View {
     var body: some View {
         HStack {
             Spacer()
-            MapButton("point.bottomleft.forward.to.point.topright.scurvepath") {
+            MapButton("point.bottomleft.forward.to.arrow.triangle.scurvepath") {
                 presentedSheet = .trails
             }
             Spacer()

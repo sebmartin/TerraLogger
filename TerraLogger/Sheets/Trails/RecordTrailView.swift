@@ -6,17 +6,85 @@
 //
 import SwiftUI
 
-struct RecordTrailView: View {    
+struct RecordTrailView: View {
+    private let nc = NotificationCenter.default
+    private let nq = NotificationQueue.default
+    
+    @State var trailName: String
+    @State var property: String = ""
+    @State private var formState = SubmitState.new
+    
     var body: some View {
-        Text("Record")
-            .navigationTitle("Record")
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Image(systemName: "location.north.line")
-                        Text("Record").font(.headline)
+        VStack {
+            Form {
+                Section(header: Text("Trail Details")) {
+                    LabeledContent {
+                        TextField("", text: $trailName)
+                            .textInputAutocapitalization(.words)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundColor(.gray)
+                    } label: {
+                      Text("Trail name")
+                    }
+                    Picker("Property", selection: $property) {
+                        Text("TODO")
                     }
                 }
             }
+            .disabled(!formState.editable)
+            Button(action: startRecording) {
+                if case .new = formState {
+                    Image(systemName: "figure.hiking")
+                } else {
+                    ProgressView()
+                }
+                
+                Text(formState.isRequesting ? "Starting..." : "Start Recording")
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(!formState.editable)
+        }
+        .onAppear() {
+            UITextField.appearance().clearButtonMode = .whileEditing
+        }
+        .navigationTitle("Record")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack {
+                    Image(systemName: "location.north.line")
+                    Text("Record").font(.headline)
+                }
+            }
+        }
     }
+    
+    func startRecording() {
+        formState = .requested
+//        nc.post(name: Notification.Name.requestedStartRecordingTrail, object: nil)
+        let notification = Notification(name: <#T##Notification.Name#>)
+        nq.enqueue(.requestedStartRecordingTrail, postingStyle: <#T##NotificationQueue.PostingStyle#>)
+    }
+}
+
+fileprivate enum SubmitState {
+    case new
+    case requested
+    case error
+    
+    var editable: Bool {
+        if case .new = self {
+            return true
+        }
+        return false
+    }
+    var isRequesting: Bool {
+        if case .requested = self {
+            return true
+        }
+        return false
+    }
+}
+
+#Preview {
+    RecordTrailView(trailName: "New Trail")
 }

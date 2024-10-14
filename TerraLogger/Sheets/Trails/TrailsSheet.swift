@@ -10,8 +10,8 @@ import SwiftData
 import UniformTypeIdentifiers
 
 private enum TrailsNavDestination: Hashable {
-    case recordTrail// = "recordTail"
-    case importTrail([PersistentIdentifier])// = "importTrail"
+    case recordTrail
+    case importTrail([PersistentIdentifier])
 }
 
 let trailFileTypes = [ "gpx", "kml", "kmz"].compactMap {
@@ -54,13 +54,13 @@ struct TrailsSheet: View {
                 }
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Image(systemName: "point.bottomleft.forward.to.point.topright.scurvepath")
+                        Image(systemName: "point.bottomleft.forward.to.arrow.triangle.scurvepath")
                         Text("Trails").font(.headline)
                     }
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Menu(content: {
-                        Button(action: handleRecordTrail) { Text("Record"); Image(systemName: "location.north.line") }
+                        Button(action: handleRecordTrail) { Text("Record with GPS"); Image(systemName: "location.north.line") }
                         Button(action: {
                             importFile = true
                         }) {
@@ -80,7 +80,7 @@ struct TrailsSheet: View {
             .navigationDestination(for: TrailsNavDestination.self) { destination in
                 switch (destination) {
                 case .recordTrail:
-                    RecordTrailView()
+                    RecordTrailView(trailName: "New Trail")
                 case .importTrail(let identifiers):
                     let trailsResult = try? modelContext.fetch(
                         FetchDescriptor<Trail>(
@@ -156,7 +156,7 @@ struct TrailsSheet: View {
     @Previewable @State var show = true
     let trails: [Trail] = []
     
-    MapButton("point.bottomleft.forward.to.point.topright.scurvepath") {
+    MapButton("point.bottomleft.forward.to.arrow.triangle.scurvepath") {
         show = true
     }
         .sheet(isPresented: $show) {

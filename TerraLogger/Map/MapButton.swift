@@ -37,13 +37,13 @@ struct MapButton: View {
 #Preview {
     VStack {
         MapButton("heart.fill")
-        MapButton("point.bottomleft.forward.to.point.topright.scurvepath", size: 40.0).foregroundColor(.red)
+        MapButton("point.bottomleft.forward.to.arrow.triangle.scurvepath", size: 40.0).foregroundColor(.red)
         MapButton("point.topleft.down.to.point.bottomright.curvepath", size: 80.0)
         HStack {
             MapButton("location.circle")
             MapButton("map")
             Spacer()
-            MapButton("point.bottomleft.forward.to.point.topright.scurvepath")
+            MapButton("point.bottomleft.forward.to.arrow.triangle.scurvepath")
             MapButton("mappin.and.ellipse")
             MapButton("heart")
             MapButton("ellipsis")
