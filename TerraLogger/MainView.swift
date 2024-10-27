@@ -83,18 +83,24 @@ struct MainView: View {
             .edgesIgnoringSafeArea(.all)
             
             VStack(alignment: .leading) {
-                VStack(alignment: .trailing) {
-                    MapButton("location.circle") { centerOnUserLocation() }
-                    MapButton("map") {
-
-                        stopRecording()
+                // Side column of view state buttons
+                HStack {
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: 20) {
+                        MapButton("location.circle") {
+                            centerOnUserLocation()
+                        }
+                        MapButton("map") {
+                            stopRecording()
+                        }
+                        MapButton("tag")
                     }
-                    MapButton("tag")
+                    .padding(.trailing, 15) // Match the compass button in the map view
                 }
-                .containerRelativeFrame([.horizontal], alignment: .trailing)
-                .padding(.trailing, 20)
                 Spacer()
+                // Bottom row of action buttons
                 MapActionButtons(presentedSheet: $presentedSheet)
+                    .padding(.bottom, 10)
             }
             .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
         }

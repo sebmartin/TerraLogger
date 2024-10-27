@@ -29,6 +29,6 @@ struct MapActionButtons: View {
                 presentedSheet = .menu
             }
             Spacer()
-        }.padding(.bottom, 10)
+        }
     }
 }
