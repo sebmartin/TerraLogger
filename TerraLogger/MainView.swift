@@ -86,20 +86,8 @@ struct MainView: View {
                 VStack(alignment: .trailing) {
                     MapButton("location.circle") { centerOnUserLocation() }
                     MapButton("map") {
-                        // TODO: Move this to the trails sheet (temp)
-                        let trailRecorder = self.trailRecorder
-                        Task {
-                            if trailRecorder.isRecording {
-                                await trailRecorder.stopRecording()
-                            } else {
-                                let trailId = await trailRecorder.startRecording(
-                                    trailName: "New Trail",
-                                    modelContainer: self.context.container
-                                )
-                                let x = String(describing: trailId)
-                                logger.info("trail: \(x)")
-                            }
-                        }
+
+                        stopRecording()
                     }
                     MapButton("tag")
                 }
@@ -138,8 +126,12 @@ struct MainView: View {
             recordingTrail = recordingTrailQuery  // adds it back forcing an update
         }
         
-        .onReceive(nc.publisher(for: Notification.Name.requestedStartRecordingTrail)) { _ in
-            
+        .onReceive(nc.publisher(for: Notification.Name.requestedStartRecordingTrail)) { notification in
+            guard let trailName = notification.userInfo?["trailName"] as? String else {
+                logger.error("Could not start recording trail, no trail name found in notification")
+                return
+            }
+            startRecordingTrail(trailName: trailName)
         }
     }
     
@@ -154,8 +146,25 @@ struct MainView: View {
     
     // MARK: - Trails
     
-    private func startRecordingTrail(trail: Trail) {
-        
+    private func startRecordingTrail(trailName: String) {
+        if trailRecorder.isRecording {
+            logger.error("Cannot start recording, recording is already in progress")
+        } else {
+            Task {
+                _ = await trailRecorder.startRecording(
+                    trailName: trailName,
+                    modelContainer: self.context.container
+                )
+                logger.info("Started recording trail: \(trailName)")
+            }
+        }
+
+    }
+    
+    private func stopRecording() {
+        Task {        
+            await trailRecorder.stopRecording()
+        }
     }
     
     @MainActor

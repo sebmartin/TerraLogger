@@ -7,8 +7,9 @@
 import SwiftUI
 
 struct RecordTrailView: View {
-    private let nc = NotificationCenter.default
     private let nq = NotificationQueue.default
+    
+    @Environment(\.dismissSheet) var dismissSheet
     
     @State var trailName: String
     @State var property: String = ""
@@ -38,7 +39,6 @@ struct RecordTrailView: View {
                 } else {
                     ProgressView()
                 }
-                
                 Text(formState.isRequesting ? "Starting..." : "Start Recording")
             }
             .buttonStyle(.borderedProminent)
@@ -60,9 +60,12 @@ struct RecordTrailView: View {
     
     func startRecording() {
         formState = .requested
-//        nc.post(name: Notification.Name.requestedStartRecordingTrail, object: nil)
-        let notification = Notification(name: <#T##Notification.Name#>)
-        nq.enqueue(.requestedStartRecordingTrail, postingStyle: <#T##NotificationQueue.PostingStyle#>)
+        let notification = Notification(name: .requestedStartRecordingTrail, userInfo: [
+            "trailName": trailName,
+            "property": property
+        ])
+        nq.enqueue(notification, postingStyle: .asap)
+        dismissSheet?()
     }
 }
 
