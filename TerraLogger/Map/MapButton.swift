@@ -26,9 +26,9 @@ struct MapButton: View {
                 .font(.system(size: size))
                 .padding()
                 .frame(width: size * 2.0, height: size * 2.0)
-                .background(Circle().fill(.ultraThinMaterial))
 
         }
+        .background(Circle().fill(.ultraThinMaterial))
         .buttonStyle(.plain)
     }
 }

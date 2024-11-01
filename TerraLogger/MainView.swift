@@ -53,6 +53,7 @@ struct MainView: View {
             .first { $0.status == .recording }
     }
     @State var recordingTrail: Trail? = nil
+    @State var isRecording: Bool = false
     
     // Boundary data
     @State var boundaries: [Boundary] = [
@@ -98,9 +99,16 @@ struct MainView: View {
                     .padding(.trailing, 15) // Match the compass button in the map view
                 }
                 Spacer()
-                // Bottom row of action buttons
+                RecordingMapControl(
+                    trail: recordingTrail,
+                    trailRecorder: trailRecorder
+                )
+                .padding([.leading, .trailing, .bottom], 10)
+                .opacity(isRecording ? 1 : 0)
+                .offset(CGSize(width: 0, height: isRecording ? 0 : 100))
+                .animation(.easeInOut(duration: 0.15), value: isRecording)
                 MapActionButtons(presentedSheet: $presentedSheet)
-                    .padding(.bottom, 10)
+                .padding(.bottom, 10)
             }
             .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
         }
@@ -138,6 +146,9 @@ struct MainView: View {
                 return
             }
             startRecordingTrail(trailName: trailName)
+        }
+        .onReceive(trailRecorder.$isRecording) { isRecording in
+            self.isRecording = isRecording
         }
     }
     
