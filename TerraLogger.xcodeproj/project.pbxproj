@@ -57,6 +57,13 @@
 			);
 			target = 968B6F4F2C993358004698DF /* TerraLogger */;
 		};
+		96C547692CD5E06B005C52F3 /* Exceptions for "TerraLoggerTests" folder in "TerraLoggerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sheets/Trails/TrailRecorderTests.swift,
+			);
+			target = 960A0A742C46117700468DE7 /* TerraLoggerTests */;
+		};
 		96DDE70B2C9A5FBE00D99F5D /* Exceptions for "TrailRecordingActivity" folder in "TerraLogger" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -79,6 +86,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		960A0A782C46117700468DE7 /* TerraLoggerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				96C547692CD5E06B005C52F3 /* Exceptions for "TerraLoggerTests" folder in "TerraLoggerTests" target */,
+			);
 			path = TerraLoggerTests;
 			sourceTree = "<group>";
 		};
