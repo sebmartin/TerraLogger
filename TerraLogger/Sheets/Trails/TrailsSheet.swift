@@ -23,6 +23,8 @@ struct TrailsSheet: View {
     @State private var importFile = false
     @State private var searchText = ""
     
+    @Environment(\.dismiss) private var dismissSheet
+    
     @Environment(\.modelContext) private var modelContext
     var trails: [Trail]
     
@@ -60,6 +62,7 @@ struct TrailsSheet: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Menu(content: {
+                        // TODO: disable if already recording ... use environment?
                         Button(action: handleRecordTrail) { Text("Record with GPS"); Image(systemName: "location.north.line") }
                         Button(action: {
                             importFile = true
@@ -95,6 +98,7 @@ struct TrailsSheet: View {
             }
             .fileImporter(isPresented: $importFile, allowedContentTypes: trailFileTypes, onCompletion: handleImportTrail(result:))
         }
+        .environment(\.dismissSheet, dismissSheet)
     }
     
     // - MARK: Trails

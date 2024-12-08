@@ -17,13 +17,13 @@ struct TrailDetails: View {
     var body: some View {
         Form {
             Section(header: Text("Trail Details")) {
-                HStack {
-                    Text("Name")
-                    TextField("", text: $trail.name)
+                LabeledContent("Name") {
+                    TextField("Name", text: $trail.name)
                         .textInputAutocapitalization(.words)
                         .multilineTextAlignment(.trailing)
                         .foregroundColor(.gray)
                 }
+                LabeledContent("Status", value: trail.status.rawValue)
             }
         }
         .onAppear() {
