@@ -8,12 +8,15 @@ import SwiftUI
 import MapboxMaps
 
 struct RecordingMapControl: View {
-    var trail: Trail?
+    @Binding var trail: Trail?
     var trailRecorder: TrailRecorder
     
     var isRecording: Bool {
         trailRecorder.isRecording
     }
+    
+    @State var duration = Duration.zero
+    @State var distance: Double = 0
     
     var body: some View {
         HStack {
@@ -28,11 +31,11 @@ struct RecordingMapControl: View {
                     }
                     HStack {
                         Spacer()
-                        Text("3:45:01")  // duration
+                        Text(duration.formatted())  // duration
                         Spacer()
                         Text(" • ")
                         Spacer()
-                        Text("5.6 km")  // distance
+                        Text(distance.formattedDistance())
                         Spacer()
                         Text(" • ")
                         Spacer()
@@ -59,17 +62,31 @@ struct RecordingMapControl: View {
             // Go to the trail details page
             print("asdf asdf")
         }
+        .onReceive(trailRecorder.$trailStats) { stats in
+            duration = stats.duration
+            distance = stats.distance
+        }
+    }
+}
+
+fileprivate extension Double {
+    func formattedDistance() -> String {
+        if self < 1000 {
+            return String(format: "%d m", Int(self))
+        } else {
+            return String(format: "%.2f km", self / 1000.0)
+        }
     }
 }
 
 #Preview {
     @Previewable @State var isHidden = false
-    @Previewable @State var trail = Trail(name: "Beautiful New Trail", coordinates: [], status: .recording, source: .recorded, startedAt: nil, endedAt: nil)
+    @Previewable @State var trail: Trail? = Trail(name: "Beautiful New Trail", coordinates: [], status: .recording, source: .recorded, startedAt: nil, endedAt: nil)
     let trailRecorder = TrailRecorder()
     VStack {
         Spacer()
         RecordingMapControl(
-            trail: trail,
+            trail: $trail,
             trailRecorder: trailRecorder
         )
             .frame(height: 80)

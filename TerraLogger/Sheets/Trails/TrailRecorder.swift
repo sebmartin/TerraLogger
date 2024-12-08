@@ -25,6 +25,7 @@ fileprivate enum RecordingState {
 class TrailRecorder: NSObject, CLLocationManagerDelegate {
 
     @Published private(set) var isRecording = false
+    @Published private(set) var trailStats = TrailStats.initial
     
     fileprivate var state: RecordingState = .stopped {
         didSet {
@@ -82,7 +83,9 @@ class TrailRecorder: NSObject, CLLocationManagerDelegate {
             return
         }
         Task {
-            await trailRecorder.append(locations: locations)
+            if let newStats = await trailRecorder.append(locations: locations) {
+                self.trailStats = newStats
+            }
         }
     }
     
@@ -111,6 +114,8 @@ class TrailRecorder: NSObject, CLLocationManagerDelegate {
         
         var lastLocation: Coordinate? = nil
         var totalDistance: Double = 0.0
+        
+        var trailStats: TrailStats = TrailStats.initial
         
         func recordNewTrail(name trailName: String) -> PersistentIdentifier {
             if let trail = trail {
@@ -156,7 +161,7 @@ class TrailRecorder: NSObject, CLLocationManagerDelegate {
         
         // MARK: - Location updates
         
-        func append(locations: [CLLocation]) async {
+        func append(locations: [CLLocation]) async -> TrailStats? {
             var coordinates = [Coordinate]()
             for location in locations {
                 logger.info("location: \(location)")
@@ -166,7 +171,7 @@ class TrailRecorder: NSObject, CLLocationManagerDelegate {
                     if distance < 2 /* meters */ {
                         // Another option is to batch saves every ~1 second
                         logger.info("Skipping location, distance is too short: \(distance)")
-                        return
+                        return nil
                     }
                     totalDistance += distance
                     logger.info("distance: \(distance), total: \(self.totalDistance)")
@@ -177,13 +182,56 @@ class TrailRecorder: NSObject, CLLocationManagerDelegate {
             
             if let trail = self.trail {
                 logger.info("Saving \(coordinates.count) new coordinates")
+                let newIndex = trail.coordinates.count
                 trail.coordinates.append(contentsOf: coordinates)
                 do {
                     try self.modelContext.save()
                 } catch {
                     logger.error("Could not save location: \(error)")
                 }
+                self.trailStats = self.trailStats.updated(with: trail.coordinates, newIndex: newIndex)
+                return self.trailStats
             }
+            return nil
         }
+    }
+}
+
+
+fileprivate extension TrailStats {
+    func updated(with coordinates: [Coordinate], newIndex index: Int) -> TrailStats {
+        let coordinates = coordinates.sorted { c1, c2 in
+            if let recordedAt1 = c1.recordedAt, let recordedAt2 = c2.recordedAt {
+                return recordedAt1 < recordedAt2
+            }
+            return c1.createdAt < c2.createdAt
+        }
+        var duration = self.duration
+        var distance = self.distance
+        var elevationGain = self.elevationGain
+        
+        if index < 1 || index >= coordinates.count {
+            return TrailStats(duration: duration, distance: distance, elevationGain: elevationGain)
+        }
+        
+        var lastCoordinate = coordinates[index - 1]
+        
+        // Calculate duration
+        if let prevRecordedAt = lastCoordinate.recordedAt, let latestRecordedAt = coordinates.last?.recordedAt {
+            let interval = latestRecordedAt.timeIntervalSince(prevRecordedAt)
+            print(duration.formatted())
+            duration += .seconds(interval)
+            print(duration.formatted())
+        }
+        
+        // And the rest...
+        for coord in coordinates[index...] {
+            distance += lastCoordinate.distance(to: coord)
+            let diffAltitude = (coord.altitude ?? 0) - (lastCoordinate.altitude ?? 0)
+            elevationGain = max(elevationGain, elevationGain + diffAltitude)
+            lastCoordinate = coord
+        }
+        
+        return TrailStats(duration: duration, distance: distance, elevationGain: elevationGain)
     }
 }

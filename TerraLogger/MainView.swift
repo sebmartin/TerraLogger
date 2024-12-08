@@ -100,7 +100,7 @@ struct MainView: View {
                 }
                 Spacer()
                 RecordingMapControl(
-                    trail: recordingTrail,
+                    trail: $recordingTrail,
                     trailRecorder: trailRecorder
                 )
                 .padding([.leading, .trailing, .bottom], 10)
