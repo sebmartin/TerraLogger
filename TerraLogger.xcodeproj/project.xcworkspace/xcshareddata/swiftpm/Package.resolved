@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mmllr/GPXKit",
       "state" : {
-        "revision" : "d7efedd8d7f0d09017e147213e4709e22643aeea",
-        "version" : "2.2.5"
+        "revision" : "3b750cb7f1e4c740e5ad0b18fa6a570382fb0ea0",
+        "version" : "2.4.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-common-ios.git",
       "state" : {
-        "revision" : "25d2799f6116d7921b707b6eb217cf976e0a664a",
-        "version" : "24.7.0"
+        "revision" : "be9fee7595e1e4f69745d8e1a5863edb7dee36f6",
+        "version" : "24.16.4"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
       "state" : {
-        "revision" : "b191fddd85c19c7372b6a5b93bb883ba04ea0cbe",
-        "version" : "11.7.0"
+        "revision" : "b264816b54fb533a2e9330f3d675d37bc1633b1d",
+        "version" : "11.16.4"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
       "state" : {
-        "revision" : "1dfa477626cde82d4df9b680027a7cd64e87b140",
-        "version" : "11.7.0"
+        "revision" : "6ba11abd44cf80cfec8fde8537d1b3b6da716a19",
+        "version" : "11.16.4"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms",
       "state" : {
-        "revision" : "f6919dfc309e7f1b56224378b11e28bab5bccc42",
-        "version" : "1.2.0"
+        "revision" : "87e50f483c54e6efd60e885f7f5aa946cee68023",
+        "version" : "1.2.1"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-numerics.git",
       "state" : {
-        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
-        "version" : "1.0.2"
+        "revision" : "0c0290ff6b24942dadb83a929ffaaa1481df04a2",
+        "version" : "1.1.1"
       }
     },
     {
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/turf-swift.git",
       "state" : {
-        "revision" : "1997fb3c3dc0d8181690a1ec192ed907bcead9e8",
-        "version" : "3.0.0"
+        "revision" : "bf840e6b9529d105687840fe2c9dcd74197d46d1",
+        "version" : "4.0.0"
       }
     },
     {
@@ -87,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/weichsel/ZIPFoundation.git",
       "state" : {
-        "revision" : "02b6abe5f6eef7e3cbd5f247c5cc24e246efcfe0",
-        "version" : "0.9.19"
+        "revision" : "22787ffb59de99e5dc1fbfe80b19c97a904ad48d",
+        "version" : "0.9.20"
       }
     }
   ],
