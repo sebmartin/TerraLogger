@@ -22,13 +22,16 @@ struct MapButton: View {
         Button(action: {
             action?()
         }) {
-            Image(systemName: systemName)
-                .font(.system(size: size))
-                .padding()
-                .frame(width: size * 2.0, height: size * 2.0)
-
+            ZStack {
+                Circle()
+                    .fill(.ultraThinMaterial)
+                    .frame(width: size * 2.0, height: size * 2.0)
+                Image(systemName: systemName)
+                    .font(.system(size: size))
+                    .padding(.all, 40)
+                    .frame(width: size * 2.0, height: size * 2.0)
+            }
         }
-        .background(Circle().fill(.ultraThinMaterial))
         .buttonStyle(.plain)
     }
 }
