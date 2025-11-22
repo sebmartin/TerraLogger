@@ -13,7 +13,7 @@ struct ImportTrailView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        Text("Import \(trails)")
+        Text("Import")
             .navigationTitle("Import")
             .toolbar {
                 ToolbarItem(placement: .principal) {

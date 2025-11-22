@@ -91,8 +91,18 @@ fileprivate extension Double {
     }
 }
 
+
+// - MARK: CLLocationCoordinate2D helpers
+
 extension CLLocationCoordinate2D {
     init(coordinate: Coordinate) {
         self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    }
+    
+}
+
+extension Coordinate {
+    var locationCoordinate2D: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }

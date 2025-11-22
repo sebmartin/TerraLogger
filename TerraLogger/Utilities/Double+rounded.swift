@@ -8,7 +8,7 @@ import Foundation
 
 extension Double {
     public func rounded(decimals: Int) -> Double {
-        let factor = pow(10, Double(decimals))
+        let factor = Double.pow(10, decimals)
         return (self * factor).rounded() / factor
     }
 }

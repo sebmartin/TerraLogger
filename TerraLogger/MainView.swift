@@ -70,7 +70,9 @@ struct MainView: View {
 
     @State var presentedSheet: MapSheet?
     @State var presentFileIMporter: Bool = true
-
+    
+    // MARK: - View Body
+    
     var body: some View {
         ZStack  {
             MapView(
@@ -140,6 +142,14 @@ struct MainView: View {
             recordingTrail = recordingTrailQuery  // adds it back forcing an update
         }
         
+        .onReceive(nc.publisher(for: Notification.Name.adjustMainMapViewportToPolygon)) { notification in
+            let polygon = notification.userInfo?["polygon"]
+            guard let polygon = polygon as? Polygon else {
+                logger.error("Could not adjust viewport, polygon is invalid")
+                return
+            }
+            adjustViewportTo(polygon: polygon)
+        }
         .onReceive(nc.publisher(for: Notification.Name.requestedStartRecordingTrail)) { notification in
             guard let trailName = notification.userInfo?["trailName"] as? String else {
                 logger.error("Could not start recording trail, no trail name found in notification")
@@ -152,12 +162,25 @@ struct MainView: View {
         }
     }
     
+    // MARK: - Viewport
+    
     func centerOnUserLocation() {
-        switch (viewport) {
-        case .idle:
-            viewport = .followPuck(zoom: cameraState?.zoom ?? 18)
-        default:
-            viewport = .idle
+        withViewportAnimation {
+            switch (viewport) {
+            case .idle:
+                viewport = .followPuck(zoom: cameraState?.zoom ?? 18)
+            default:
+                viewport = .idle
+            }
+        }
+    }
+    
+    func adjustViewportTo(polygon: Polygon) {
+        withViewportAnimation {
+            viewport = .overview(
+                geometry: polygon,
+                geometryPadding: EdgeInsets(top: 50, leading: 50, bottom: 50, trailing: 50)
+            )
         }
     }
     
