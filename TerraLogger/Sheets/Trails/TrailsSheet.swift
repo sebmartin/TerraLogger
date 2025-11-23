@@ -43,6 +43,11 @@ struct TrailsSheet: View {
                     NavigationLink(value: trail) {
                         HStack {
                             Text(trail.name)
+                            if !trail.visible {
+                                Spacer()
+                                Image(systemName: "eye.slash")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }

@@ -42,7 +42,9 @@ struct MapView: View {
                 
                 // Trails second (on top of boundaries)
                 ForEvery(completedTrails) { trail in
-                    trail.annotation
+                    if trail.visible {
+                        trail.annotation
+                    }
                 }
                 
                 if let recordingTrail = recordingTrail {

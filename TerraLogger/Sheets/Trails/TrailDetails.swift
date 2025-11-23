@@ -56,6 +56,9 @@ struct TrailDetails: View {
                     Text("Name")
                 }
                 LabeledContent("Status", value: trail.status.rawValue.capitalized)
+                Toggle(isOn: $trail.visible) {
+                    Text("Visible")
+                }
                 if trail.coordinates.count > 0 {
                     Map(initialViewport: viewport) {
                         trail.annotation
@@ -81,6 +84,7 @@ struct TrailDetails: View {
                 Label("Share", systemImage: "square.and.arrow.up")
             }
         }
+        .navigationTitle("Trail Details")
         .onAppear() {
             UITextField.appearance().clearButtonMode = .whileEditing
             print(trail.coordinates.sorted(by: { $0.createdAt < $1.createdAt }))

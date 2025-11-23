@@ -27,6 +27,7 @@ final class Trail {
         get { TrailStatus(rawValue: statusRaw)! }
         set { statusRaw = newValue.rawValue }
     }
+    var visible: Bool = true
     var source: TrailSource
     var createdAt: Date
     var startedAt: Date?
@@ -35,9 +36,10 @@ final class Trail {
     
     @Relationship(deleteRule: .cascade) var coordinates: [Coordinate]
     
-    init(name: String, coordinates: [Coordinate], status: TrailStatus, source: TrailSource, startedAt: Date? = nil, endedAt: Date? = nil) {
+    init(name: String, coordinates: [Coordinate], status: TrailStatus, visible: Bool = true, source: TrailSource, startedAt: Date? = nil, endedAt: Date? = nil) {
         self.name = name
         self.statusRaw = status.rawValue
+        self.visible = visible
         self.source = source
         self.startedAt = startedAt
         self.endedAt = endedAt
