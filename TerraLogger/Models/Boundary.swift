@@ -21,22 +21,12 @@ final class Boundary {
 
 extension Boundary {
     func polygonAnnotation() -> PolygonAnnotation {
-        return PolygonAnnotation(polygon: Polygon([self.coordinates.map {
-            CLLocationCoordinate2D(
-                latitude: $0.latitude,
-                longitude: $0.longitude
-            )
-        }]))
+        return PolygonAnnotation(polygon: Polygon([self.coordinates.asLocationCoordinate2Ds()]))
     }
     
     func polylineAnnotation() -> PolylineAnnotation {
         return PolylineAnnotation(lineCoordinates:
-            self.coordinates.map {
-                CLLocationCoordinate2D(
-                    latitude: $0.latitude,
-                    longitude: $0.longitude
-                )
-            }
+            self.coordinates.asLocationCoordinate2Ds()
         )
     }
 }

@@ -9,4 +9,5 @@ import os
 extension Logger {
     static let main = Logger(subsystem: Logger.subsystem, category: "main")
     static let importer = Logger(subsystem: Logger.subsystem, category: "importer")
+    static let exporter = Logger(subsystem: Logger.subsystem, category: "exporter")
 }

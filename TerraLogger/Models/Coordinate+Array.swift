@@ -55,4 +55,8 @@ extension Array where Element == Coordinate {
 
         return Polygon([ [sw, se, ne, nw, sw] ])
     }
+    
+    func asLocationCoordinate2Ds() -> [CLLocationCoordinate2D] {
+        return self.map { CLLocationCoordinate2D(coordinate: $0) }
+    }
 }

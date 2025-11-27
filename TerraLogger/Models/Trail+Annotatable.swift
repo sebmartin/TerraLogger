@@ -11,9 +11,7 @@ import SwiftUI
 
 extension Trail {
     var annotation: PolylineAnnotation {
-        let polyline = PolylineAnnotation(lineCoordinates: self.coordinates.sorted().map {
-            CLLocationCoordinate2D(coordinate: $0)
-        })
+        let polyline = PolylineAnnotation(lineCoordinates: self.coordinates.sorted().asLocationCoordinate2Ds())
         
         return switch (status) {
         case .recording:

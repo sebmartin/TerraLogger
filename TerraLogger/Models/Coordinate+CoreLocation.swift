@@ -19,4 +19,11 @@ extension Coordinate {
             recordedAt: location.timestamp
         )
     }
+    
+    convenience init(from coordinate: CLLocationCoordinate2D) {
+        self.init(
+            coordinate.latitude,
+            coordinate.longitude,
+        )
+    }
 }
