@@ -58,9 +58,11 @@ struct TrailDetails: View {
         requestExport = true
     }
     
+    @State private var selectedColor: Color = Color.blue
+    
     var body: some View {
         Form {
-            Section(header: Text("Trail Details")) {
+            Section {
                 LabeledContent {
                     TextField("Name", text: $trail.name)
                         .textInputAutocapitalization(.words)
@@ -70,6 +72,7 @@ struct TrailDetails: View {
                     Text("Name")
                 }
                 LabeledContent("Status", value: trail.status.rawValue.capitalized)
+                LabeledContent("Distance", value: "\(trail.distance.formatted(.number.precision(.fractionLength(0)))) meters")
                 Toggle(isOn: $trail.visible) {
                     Text("Visible")
                 }
@@ -89,31 +92,34 @@ struct TrailDetails: View {
                         .disabled(true)
                         .aspectRatio(1, contentMode: .fit)
                 }
-                    
+                ColorPicker("Color", selection: $selectedColor, supportsOpacity: false)
             }
-            Button("Center on Map", systemImage: "dot.viewfinder", action: centerTrailOnMap)
-            Button("Share", systemImage: "square.and.arrow.up") { showExportShareSheet = !showExportShareSheet }
-            .confirmationDialog("Select a format", isPresented: $showExportShareSheet) {
-                ShareLink(
-                    "GeoJSON",
-                    item: trail.geoJsonTransferable(modelContainer: modelContext.container),
-                    preview: SharePreview(trail.name, image: exportIcon)
-                )
-                ShareLink(
-                    "KML",
-                    item: trail.kmlTransferable(modelContainer: modelContext.container),
-                    preview: SharePreview(trail.name, image: exportIcon)
-                )
-                ShareLink(
-                    "KMZ",
-                    item: trail.kmzTransferable(modelContainer: modelContext.container),
-                    preview: SharePreview(trail.name, image: exportIcon)
-                )
-                ShareLink(
-                    "GPX",
-                    item: trail.gpxTransferable(modelContainer: modelContext.container),
-                    preview: SharePreview(trail.name, image: exportIcon)
-                )
+            
+            Section {
+                Button("Center on Map", systemImage: "dot.viewfinder", action: centerTrailOnMap)
+                Button("Share", systemImage: "square.and.arrow.up") { showExportShareSheet = !showExportShareSheet }
+                    .confirmationDialog("Select a format", isPresented: $showExportShareSheet) {
+                        ShareLink(
+                            "GeoJSON",
+                            item: trail.geoJsonTransferable(modelContainer: modelContext.container),
+                            preview: SharePreview(trail.name, image: exportIcon)
+                        )
+                        ShareLink(
+                            "KML",
+                            item: trail.kmlTransferable(modelContainer: modelContext.container),
+                            preview: SharePreview(trail.name, image: exportIcon)
+                        )
+                        ShareLink(
+                            "KMZ",
+                            item: trail.kmzTransferable(modelContainer: modelContext.container),
+                            preview: SharePreview(trail.name, image: exportIcon)
+                        )
+                        ShareLink(
+                            "GPX",
+                            item: trail.gpxTransferable(modelContainer: modelContext.container),
+                            preview: SharePreview(trail.name, image: exportIcon)
+                        )
+                }
             }
         }
         .navigationTitle("Trail Details")
