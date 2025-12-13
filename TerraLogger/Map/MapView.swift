@@ -14,6 +14,13 @@ import MapboxMaps
 
 fileprivate let logger = Logger.main
 
+enum SelectedFeature {
+    case none
+    case trail(id: PersistentIdentifier)
+}
+
+let TRAIL_DETENT_DEFAULT = PresentationDetent.height(200)
+
 struct MapView: View {
     @Environment(\.modelContext) var context
     
@@ -24,8 +31,10 @@ struct MapView: View {
     @Binding var recordingTrail: Trail?
     @Binding var boundaries: [Boundary]
     
+    @State private var selectedTrail: Trail? = nil
     @State private var onCameraChangedCancellable: AnyCancelable? = nil
-    
+    @State var popoverDetent = TRAIL_DETENT_DEFAULT
+        
     var body: some View {
         MapReader { mapProxy in
             Map(viewport: $viewport) {
@@ -40,15 +49,30 @@ struct MapView: View {
                         .lineJoin(.round)
                 }
                 
-                // Trails second (on top of boundaries)
-                ForEvery(completedTrails) { trail in
-                    if trail.visible {
-                        trail.annotation
+                // Then completed trails
+                PolylineAnnotationGroup(completedTrails) { trail in
+                    if trail.id == selectedTrail?.id {
+                        return trail.annotation.lineColor(.red)
+                    } else {
+                        return trail.annotation
                     }
                 }
+                .layerId("completed-trails")
                 
+                // Finally the trail currently being recorded (if any)
                 if let recordingTrail = recordingTrail {
                     recordingTrail.annotation
+                }
+                
+                TapInteraction(.layer("completed-trails")) { feature, context in
+                    // Handle tap on the feature
+                    if let idString = feature.id?.id, let featureId = PersistentIdentifier(jsonString: idString) {
+                        selectedTrail = completedTrails.first {
+                            $0.id == featureId
+                        }
+                        return true // Stop propagation
+                    }
+                    return false
                 }
                 
                 // User position is last to render above other annotations
@@ -64,6 +88,11 @@ struct MapView: View {
                     attributionButton: .init(position: .bottomRight, margins: CGPoint(x: 0, y: 1000))
                 )
             )
+            .popover(item: $selectedTrail, arrowEdge: .bottom) { trail in
+                TrailMapSheet(trail: trail, detent: $popoverDetent)
+                    .presentationDetents([TRAIL_DETENT_DEFAULT, .medium, .large], selection: $popoverDetent)
+                .onDisappear { popoverDetent = TRAIL_DETENT_DEFAULT }
+            }
             .onAppear {
                 if let locationProvider = locationProvider {
                     mapProxy.location?.override(

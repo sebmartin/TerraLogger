@@ -14,7 +14,7 @@ private enum TrailsNavDestination: Hashable {
     case importTrail([PersistentIdentifier])
 }
 
-let trailFileTypes = [ "gpx", "kml", "kmz"].compactMap {
+let trailFileTypes = [ "gpx", "kml", "kmz", "geojson", "json"].compactMap {
     UTType(filenameExtension: $0)
 }
 

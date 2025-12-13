@@ -10,8 +10,11 @@ import SwiftUI
 
 
 extension Trail {
-    var annotation: PolylineAnnotation {
-        let polyline = PolylineAnnotation(lineCoordinates: self.coordinates.sorted().asLocationCoordinate2Ds())
+    var annotation: PolylineAnnotation {       
+        let polyline = PolylineAnnotation(
+            id: id.asString() ?? UUID().uuidString,
+            lineCoordinates: self.coordinates.sorted().asLocationCoordinate2Ds()
+        )
         
         return switch (status) {
         case .recording:
@@ -26,6 +29,8 @@ extension Trail {
                 .lineColor(UIColor.systemBlue.withAlphaComponent(0.9))
                 .lineJoin(.round)
                 .lineWidth(8.0)
+                .lineBorderColor(UIColor.black)
+                .lineBorderWidth(2.0)
         }
     }
 }
